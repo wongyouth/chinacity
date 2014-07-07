@@ -2,9 +2,13 @@
 
 Get the latest China cities data from [official site](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/).
 
-Output is supporting JSON and CSV format.
-JSON format is totally compatible with the areas.json data of gem [china_city](https://github.com/saberma/china_city).
-Also support output of the first charactor of every word in pinyin as short name of a city, like `BJS` for `北京市`.
+## Feature
+
+* A command line tool
+* Get the latest China cities data from Official site
+* Outputs format support JSON and CSV
+* Option to output first charactors of every word in pinyin as short name of cities, like `BJS` for `北京市`
+* JSON format is compatible with city data of [china_city](https://github.com/saberma/china_city) gem
 
 ## Installation
 
@@ -22,7 +26,8 @@ Or install it yourself as:
 
 ## Usage
 
-### Output China cities data in JSON format.
+### Outputs China cities data in JSON format.
+
 The format is totally compatible with <https://github.com/saberma/china_city/blob/master/db/areas.json>
 
     $ chinacity > areas.json
@@ -66,13 +71,14 @@ The result looks like
     },
     ...
   ]
+}
 ```
 
-### Output China cities data with short name.
+### Outputs China cities data with short name.
 
     $ chinacity -s > areas.json
 
-The Result json looks like
+The result looks like
 
 ```
 {
@@ -100,19 +106,19 @@ The Result json looks like
 
 ```
 
-### Output China cities data in CSV format.
+### Outputs China cities data in CSV format.
 
     $ chinacity -sc > areas.csv
 
 The result looks like
 
 ```
-id, 名称, 缩写, 层级
-110000, 北京市, BJS, 1
-110100, 市辖区, SXQ, 2
-110101, 东城区, DCQ, 3
-110102, 西城区, XCQ, 3
-110105, 朝阳区, ZYQ, 3
+id,名称,缩写,层级
+110000,北京市,BJS,1
+110100,市辖区,SXQ,2
+110101,东城区,DCQ,3
+110102,西城区,XCQ,3
+110105,朝阳区,ZYQ,3
 ...
 ```
 
@@ -123,9 +129,14 @@ id, 名称, 缩写, 层级
     Usage: chinacity [options]
 
     options:
-        -s, --short                      Short name, First charactor of every word in pinyin
+        -s, --short                      Short name, first charactors of every word in pinyin
         -c, --csv                        Output CSV format
+        -m, --minimize                   Trim spaces to minimize JSON data
+        -H, --headless                   Skip outputing the head line for CSV
 
+## Dependencies
+
+As `chinacity` use `csv` library, only Ruby 1.9+ is supported.
 
 ## Contributing
 
