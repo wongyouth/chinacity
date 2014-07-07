@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'chinese_pinyin'
 require 'json'
 require 'httparty'
+require 'csv'
 
 module Chinacity
   HOST = 'http://www.stats.gov.cn'
@@ -11,8 +12,10 @@ module Chinacity
 
   class Cli
     def initialize options
-      @short = options[:short]
-      @foramt = options[:format]
+      @short    = options[:short]
+      @foramt   = options[:format]
+      @minimize = options[:minimize]
+      @headless = options[:headless]
     end
 
     def start
@@ -21,7 +24,7 @@ module Chinacity
 
       add_short_name if @short
 
-      output (@foramt == :json ? to_json : to_csv)
+      @foramt == :json ? output_json : output_csv
     end
 
     private
@@ -74,34 +77,35 @@ module Chinacity
         pretty
       end
 
-      def to_json
-        JSON.pretty_generate(nested_cities)
+      def output_json
+        if @minimize
+          STDOUT.write JSON.generate(nested_cities)
+        else
+          STDOUT.write JSON.pretty_generate(nested_cities)
+        end
       end
 
-      def to_csv
-        list = @short ? [ "id, 名称, 缩写, 层级" ] : ["id, 名称, 层级"]
-
-        list += @cities.map do |city|
-          level = if city[:id].end_with? '0000'
-            1
-          elsif city[:id].end_with? '00'
-            2
-          else
-            3
+      def output_csv
+        CSV do |csv_out|
+          unless @headless
+            list = @short ? ["id", "名称", "缩写", "层级"] : ["id", "名称", "层级"]
+            csv_out << list
           end
 
-          if @short
-            "#{city[:id]}, #{city[:text]}, #{city[:short]}, #{level}"
-          else
-            "#{city[:id]}, #{city[:text]}, #{level}"
+          @cities.map do |city|
+            level = if city[:id].end_with? '0000'
+              1
+            elsif city[:id].end_with? '00'
+              2
+            else
+              3
+            end
+
+            list = @short ? [city[:id], city[:text], city[:short], level] : [city[:id], city[:text], level]
+
+            csv_out << list
           end
         end
-
-        list.join("\n")
-      end
-
-      def output data
-        STDOUT.write data.to_s
       end
   end
 end

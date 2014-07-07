@@ -19,6 +19,14 @@ parser = OptionParser.new do |opts|
   opts.on('-c', '--csv', 'Output CSV format') do
     options[:format] = :csv
   end
+
+  opts.on('-m', '--minimize', 'Trim spaces to minimize JSON data') do
+    options[:minimize] = true
+  end
+
+  opts.on('-H', '--headless', 'Skip outputing head line for CSV') do
+    options[:headless] = true
+  end
 end
 
 parser.parse!
