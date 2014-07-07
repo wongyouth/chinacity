@@ -16,7 +16,7 @@ parser = OptionParser.new do |opts|
     options[:short] = true
   end
 
-  opts.on('-c', '--csv', 'Output CSV format') do
+  opts.on('-c', '--csv', 'Outputs in CSV format') do
     options[:format] = :csv
   end
 

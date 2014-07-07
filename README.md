@@ -48,7 +48,6 @@ The result looks like
     },
     ...
   ],
-
   "city": [
     {
       "id": "110100",
@@ -130,7 +129,7 @@ id,名称,缩写,层级
 
     options:
         -s, --short                      Short name, first charactors of every word in pinyin
-        -c, --csv                        Output CSV format
+        -c, --csv                        Outputs in CSV format
         -m, --minimize                   Trim spaces to minimize JSON data
         -H, --headless                   Skip outputing the head line for CSV
 
