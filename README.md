@@ -2,6 +2,13 @@
 
 Get the latest China cities data from [official site](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/).
 
+## China city data file download links
+
+* [areas.csv](https://github.com/wongyouth/chinacity/raw/master/areas.csv)
+* [areas.json](https://github.com/wongyouth/chinacity/raw/master/json.csv)
+
+Or you can create these data by your own, check out [Usage](https://github.com/wongyouth/chinacity#usage).
+
 ## Feature
 
 * A command line tool
