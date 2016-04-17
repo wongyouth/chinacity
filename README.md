@@ -4,8 +4,8 @@ Get the latest China cities data from [official site](http://www.stats.gov.cn/tj
 
 ## China city data (version: 2014-10-31)
 
-* [areas.csv](https://github.com/wongyouth/chinacity/raw/master/areas.csv)
-* [areas.json](https://github.com/wongyouth/chinacity/raw/master/json.csv)
+* [areas.csv](https://github.com/wongyouth/chinacity/blob/master/areas.csv)
+* [areas.json](https://github.com/wongyouth/chinacity/blob/master/json.csv)
 
 Or you can create these data by your own, check out [Usage](https://github.com/wongyouth/chinacity#usage).
 
