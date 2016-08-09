@@ -2,7 +2,7 @@
 
 Get the latest China cities data from [official site](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/).
 
-## China city data (version: 2014-10-31)
+## China city data (version: 2015-09-30, updated on 2016-08-09)
 
 * [areas.csv](https://github.com/wongyouth/chinacity/blob/master/areas.csv)
 * [areas.json](https://github.com/wongyouth/chinacity/blob/master/json.csv)
